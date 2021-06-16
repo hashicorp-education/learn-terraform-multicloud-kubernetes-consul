@@ -48,10 +48,6 @@ resource "helm_release" "consul_dc1" {
   values = [
     file("dc1.yaml")
   ]
-
-  provisioner "local-exec" {
-    command = "sleep 100 && kubectl config use-context eks && kubectl apply -f proxy_default.yaml"
-  }
 }
 
 data "kubernetes_secret" "eks_federation_secret" {
@@ -118,10 +114,6 @@ resource "helm_release" "consul_dc2" {
   values = [
     file("dc2.yaml")
   ]
-
-  provisioner "local-exec" {
-    command = "sleep 100 && kubectl config use-context aks && kubectl apply -f proxy_default.yaml"
-  }
 
   depends_on = [kubernetes_secret.aks_federation_secret]
 }
