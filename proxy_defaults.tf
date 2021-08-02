@@ -1,5 +1,5 @@
 ## Apply the configuration in main.tf before uncommenting and applying the configuration in this file.
-
+/*
 provider "kubernetes-alpha" {
   alias                  = "eks"
   host                   = data.aws_eks_cluster.cluster.endpoint
@@ -53,3 +53,4 @@ resource "kubernetes_manifest" "aks_proxy_defaults" {
     }
   }
 }
+*/
