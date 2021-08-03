@@ -24,6 +24,10 @@ provider "kubernetes" {
     args        = ["eks", "get-token", "--cluster-name", data.aws_eks_cluster.cluster.name]
     command     = "aws"
   }
+
+  experiments {
+    manifest_resource = true
+  }
 }
 
 provider "helm" {
@@ -83,6 +87,10 @@ provider "kubernetes" {
   client_certificate     = base64decode(data.azurerm_kubernetes_cluster.cluster.kube_config.0.client_certificate)
   client_key             = base64decode(data.azurerm_kubernetes_cluster.cluster.kube_config.0.client_key)
   cluster_ca_certificate = base64decode(data.azurerm_kubernetes_cluster.cluster.kube_config.0.cluster_ca_certificate)
+
+  experiments {
+    manifest_resource = true
+  }
 }
 
 provider "helm" {
