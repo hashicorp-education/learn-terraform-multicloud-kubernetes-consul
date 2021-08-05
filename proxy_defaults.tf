@@ -9,6 +9,7 @@ resource "kubernetes_manifest" "eks_proxy_defaults" {
     "metadata" = {
       "name"      = "global"
       "namespace" = "default"
+      "finalizers" = ["finalizers.consul.hashicorp.com"]
     }
     "spec" = {
       "meshGateway" = {
@@ -27,6 +28,7 @@ resource "kubernetes_manifest" "aks_proxy_defaults" {
     "metadata" = {
       "name"      = "global"
       "namespace" = "default"
+      "finalizers" = ["finalizers.consul.hashicorp.com"]
     }
     "spec" = {
       "meshGateway" = {
